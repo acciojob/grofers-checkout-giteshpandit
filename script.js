@@ -15,7 +15,7 @@ const getSum = () => {
     totalPrice += parseFloat(price.textContent);
   });
 
-  // Check if the total row already exists, if so, remove it
+  // Check if a total row already exists and remove it if necessary
   const existingTotalRow = document.querySelector("#totalRow");
   if (existingTotalRow) {
     existingTotalRow.remove();
@@ -23,11 +23,11 @@ const getSum = () => {
 
   // Create a new row for the total price
   const totalRow = document.createElement("tr");
-  totalRow.id = "totalRow"; // Set an ID to the total row for future reference
+  totalRow.id = "totalRow"; // Set an ID for the total row
 
-  // Create a cell to span all columns (assuming two columns)
+  // Create a single cell that spans the table columns
   const totalCell = document.createElement("td");
-  totalCell.colSpan = 2; // Adjust based on the number of columns
+  totalCell.colSpan = 2; // Adjust based on the number of columns in the table
   totalCell.textContent = `Total Price: ${totalPrice.toFixed(2)}`;
 
   // Append the cell to the row
