@@ -15,13 +15,20 @@ const getSum = () => {
     totalPrice += parseFloat(price.textContent);
   });
 
+  // Check if the total row already exists, if so, remove it
+  const existingTotalRow = document.querySelector("#totalRow");
+  if (existingTotalRow) {
+    existingTotalRow.remove();
+  }
+
   // Create a new row for the total price
   const totalRow = document.createElement("tr");
+  totalRow.id = "totalRow"; // Set an ID to the total row for future reference
 
-  // Create a single cell to display the total price
+  // Create a cell to span all columns (assuming two columns)
   const totalCell = document.createElement("td");
-  totalCell.colSpan = 2; // Assuming the table has two columns (item and price)
-  totalCell.textContent = `Total Price: ${totalPrice.toFixed(2)}`; // Display total price with two decimal places
+  totalCell.colSpan = 2; // Adjust based on the number of columns
+  totalCell.textContent = `Total Price: ${totalPrice.toFixed(2)}`;
 
   // Append the cell to the row
   totalRow.appendChild(totalCell);
@@ -33,5 +40,6 @@ const getSum = () => {
 
 // Attach the click event listener to the button
 getSumBtn.addEventListener("click", getSum);
+
 
 
