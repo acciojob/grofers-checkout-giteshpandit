@@ -36,10 +36,20 @@ const getSum = () => {
   // Append the total row to the table
   const table = document.querySelector("table");
   table.appendChild(totalRow);
+
+  // Create or update the element with id 'ans' to display the total price
+  let ansElement = document.querySelector("#ans");
+  if (!ansElement) {
+    ansElement = document.createElement("div");
+    ansElement.id = "ans";
+    document.body.appendChild(ansElement);
+  }
+  ansElement.textContent = `Total Price: ${totalPrice.toFixed(2)}`;
 };
 
 // Attach the click event listener to the button
 getSumBtn.addEventListener("click", getSum);
+
 
 
 
