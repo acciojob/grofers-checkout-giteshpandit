@@ -1,35 +1,34 @@
-// Create the "Get Total Price" button
 const getSumBtn = document.createElement("button");
 getSumBtn.append("Get Total Price");
 document.body.appendChild(getSumBtn);
 
 const getSum = () => {
-  // Select all elements with the class "prices"
+  // Get all prices from the table
   const prices = document.querySelectorAll(".prices");
-
-  // Initialize a variable to store the total sum
+  
+  // Initialize total price to 0
   let totalPrice = 0;
-
-  // Loop through each price and add its value to totalPrice
-  prices.forEach(price => {
+  
+  // Loop through each price and add it to the total
+  prices.forEach((price) => {
     totalPrice += parseFloat(price.textContent);
   });
-
-  // Check if the element with id 'ans' exists
-  let ansElement = document.querySelector("#ans");
-  if (!ansElement) {
-    // Create the element if it doesn't exist
-    ansElement = document.createElement("div");
-    ansElement.id = "ans";
-    document.body.appendChild(ansElement);
-  }
-
-  // Update the content of the 'ans' element with the total price
-  ansElement.textContent = totalPrice.toFixed(2);
+  
+  // Create a new row and cell to display the total price
+  const totalRow = document.createElement("tr");
+  const totalCell = document.createElement("td");
+  totalCell.colSpan = 2; // Assuming two columns in the table
+  totalCell.textContent = `Total: $${totalPrice.toFixed(2)}`;
+  
+  // Add the total row to the table
+  const table = document.querySelector("table");
+  table.appendChild(totalRow);
+  totalRow.appendChild(totalCell);
 };
 
-// Attach the click event listener to the button
 getSumBtn.addEventListener("click", getSum);
+
+
 
 
 
