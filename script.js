@@ -19,6 +19,7 @@ const getSum = () => {
   const totalCell = document.createElement("td");
   totalCell.colSpan = 2; // Assuming two columns in the table
   totalCell.textContent = `Total: $${totalPrice.toFixed(2)}`;
+  (link unavailable) = "ans"; // Add the id "ans" to the total cell
   
   // Add the total row to the table
   const table = document.querySelector("table");
@@ -27,6 +28,9 @@ const getSum = () => {
 };
 
 getSumBtn.addEventListener("click", getSum);
+
+
+
 
 
 
