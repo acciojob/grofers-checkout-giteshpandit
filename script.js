@@ -15,40 +15,22 @@ const getSum = () => {
     totalPrice += parseFloat(price.textContent);
   });
 
-  // Check if a total row already exists and remove it if necessary
-  const existingTotalRow = document.querySelector("#totalRow");
-  if (existingTotalRow) {
-    existingTotalRow.remove();
-  }
-
-  // Create a new row for the total price
-  const totalRow = document.createElement("tr");
-  totalRow.id = "totalRow"; // Set an ID for the total row
-
-  // Create a single cell that spans the table columns
-  const totalCell = document.createElement("td");
-  totalCell.colSpan = 2; // Adjust based on the number of columns in the table
-  totalCell.textContent = `Total Price: ${totalPrice.toFixed(2)}`;
-
-  // Append the cell to the row
-  totalRow.appendChild(totalCell);
-
-  // Append the total row to the table
-  const table = document.querySelector("table");
-  table.appendChild(totalRow);
-
-  // Create or update the element with id 'ans' to display the total price
+  // Check if the element with id 'ans' exists
   let ansElement = document.querySelector("#ans");
   if (!ansElement) {
+    // Create the element if it doesn't exist
     ansElement = document.createElement("div");
     ansElement.id = "ans";
     document.body.appendChild(ansElement);
   }
-  ansElement.textContent = `Total Price: ${totalPrice.toFixed(2)}`;
+
+  // Update the content of the 'ans' element with the total price
+  ansElement.textContent = totalPrice.toFixed(2);
 };
 
 // Attach the click event listener to the button
 getSumBtn.addEventListener("click", getSum);
+
 
 
 
